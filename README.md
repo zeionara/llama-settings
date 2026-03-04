@@ -8,7 +8,7 @@ To run `TheBloke/Llama-2-13B-GGUF:Q4_K_M` on `arm` SoC, build a custom image for
 docker build -t local/llama.cpp:server --target server --build-arg TARGETARCH=arm64 -f .devops/cpu.Dockerfile .
 ```
 
-Alternative targets are `light` and `full` (refer to the [llama.cpp documentation](https://github.com/ggml-org/llama.cpp/blob/master/docs/docker.md#building-docker-locally-1).
+Alternative targets are `light` and `full` (refer to the [llama.cpp documentation](https://github.com/ggml-org/llama.cpp/blob/master/docs/docker.md#building-docker-locally-1)).
 
 An [original repo][llama.cpp] can be used though. Just delete mentions of `armv9` (see [this issue](https://github.com/ggml-org/llama.cpp/issues/13891)):
 
