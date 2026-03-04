@@ -10,5 +10,4 @@ fi
 
 curl http://$host:$port/v1/chat/completions \
   -H 'Content-Type: application/json' \
-  -d "{\"model\": \"TheBloke/Llama-2-13B-GGUF:Q4_K_M\", \"messages\": [{\"role\": \"user\", \"content\": \"$1\"}], \"stream\": false, \"max_tokens\": 512, \"stop\": [\"<|im_end|>\"]}" -s | python -m json.tool --no-ensure-ascii
-  # -d "{\"model\": \"Qwen_Qwen3.5-2B-Q8_0.gguf\", \"messages\": [{\"role\": \"user\", \"content\": \"$1\"}], \"stream\": false, \"max_tokens\": 512, \"stop\": [\"<|im_end|>\"]}" -s | python -m json.tool --no-ensure-ascii
+  -d "{\"model\": \"unsloth/Qwen3.5-4B-GGUF:Q4_K_M\", \"messages\": [{\"role\": \"user\", \"content\": \"$1\"}], \"stream\": false, \"stop\": [\"<|im_end|>\"]}" -s | python -m json.tool --no-ensure-ascii
