@@ -1,10 +1,8 @@
-# --hf-repo unsloth/Qwen3.5-35B-A3B-GGUF:Q4_K_M
-# --hf-repo unsloth/Qwen3.5-9B-GGUF:Q4_K_M
-
 services:
   llama:
-    image: local/llama.cpp:full
-    container_name: llama
+    # image: local/llama.cpp:full-generic-cpu
+    image: local/llama.cpp:server-generic-cpu
+    container_name: llama-qwen3.5-35b-a3b
     ports:
       - 8000:80
     volumes:
@@ -15,10 +13,10 @@ services:
     # entrypoint: sleep 3600
     entrypoint: >
       /app/llama-server
-      --hf-repo unsloth/Qwen3.5-4B-GGUF:Q4_K_M
+      --hf-repo unsloth/Qwen3.5-35B-A3B-GGUF:Q4_K_M
       --ctx-size 16384
       --threads 12
-      --alias "unsloth/Qwen3.5-4B-GGUF"
+      --alias "unsloth/Qwen3.5-35B-A3B-GGUF"
       --host 0.0.0.0
       --port 80
       --no-mmproj

@@ -1,0 +1,24 @@
+services:
+  llama:
+    # image: local/llama.cpp:full
+    image: local/llama.cpp:server
+    container_name: llama-qwen3.5-4b
+    ports:
+      - 8000:80
+    volumes:
+      - ${DOCKER_VOLUME_DIRECTORY:-.}/volumes/models:/models
+      - ${DOCKER_VOLUME_DIRECTORY:-.}/volumes/.cache:/root/.cache
+    env_file:
+      - .env
+    # entrypoint: sleep 3600
+    entrypoint: >
+      /app/llama-server
+      --hf-repo unsloth/Qwen3.5-4B-GGUF:Q4_K_M
+      --ctx-size 16384
+      --threads 12
+      --alias "unsloth/Qwen3.5-4B-GGUF"
+      --host 0.0.0.0
+      --port 80
+      --no-mmproj
+      --chat-template-kwargs '{"enable_thinking": true}'
+    # restart: unless-stopped
