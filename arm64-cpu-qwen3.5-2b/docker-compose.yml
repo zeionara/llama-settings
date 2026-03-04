@@ -1,12 +1,9 @@
-# https://github.com/ggml-org/llama.cpp/issues/13891
-# docker build -t local/llama.cpp:server --target server --build-arg TARGETARCH=arm64 -f .devops/cpu.Dockerfile .
 # --model /models/Qwen_Qwen3.5-2B-Q8_0.gguf
 # -hf bartowski/Qwen_Qwen3.5-2B-GGUF:Q4_K_M
 
 services:
   llama:
     image: local/llama.cpp:server
-    # platform: linux/arm64
     container_name: llama
     ports:
       - 8000:80
@@ -17,7 +14,6 @@ services:
       - .env
     # restart: unless-stopped
     # entrypoint: sleep 3600
-    # --model /models/Qwen_Qwen3.5-2B-Q8_0.gguf
     entrypoint: >
       /app/llama-server
       -hf TheBloke/Llama-2-13B-GGUF:Q4_K_M
