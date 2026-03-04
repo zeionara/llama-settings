@@ -1,13 +1,4 @@
-# --model /models/Qwen_Qwen3.5-2B-Q8_0.gguf
-# -hf bartowski/Qwen_Qwen3.5-2B-GGUF:Q4_K_M
-# -hf TheBloke/Llama-2-13B-GGUF:Q4_K_M
-# -hf bartowski/Qwen_Qwen3.5-2B-GGUF:Q4_K_M
-# -hf unsloth/Qwen3.5-0.8B-GGUF:Q4_K_M
-# -hf unsloth/Qwen3.5-35B-A3B-GGUF:Q4_K_M
-#   --temp 0.3
-#   --top-p 0.95
-#   --top-k 20
-#   --min-p 0.00
+# --hf-repo unsloth/Qwen3.5-35B-A3B-GGUF:Q4_K_M
 # --hf-repo unsloth/Qwen3.5-9B-GGUF:UD-Q4_K_XL
 
 services:
@@ -21,7 +12,6 @@ services:
       - ${DOCKER_VOLUME_DIRECTORY:-.}/volumes/.cache:/root/.cache
     env_file:
       - .env
-    # restart: unless-stopped
     # entrypoint: sleep 3600
     entrypoint: >
       /app/llama-server
@@ -31,3 +21,4 @@ services:
       --alias "unsloth/Qwen3.5-4B-GGUF"
       --host 0.0.0.0
       --port 80
+    # restart: unless-stopped
